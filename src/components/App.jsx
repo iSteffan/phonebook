@@ -7,9 +7,13 @@ import {
   selectContacts,
   selectIsLoading,
   selectError,
-} from 'redux/contactSlice';
-import { setFilter, getFilter } from 'redux/filterSlice';
-import { fetchContacts, addContact, deleteContact } from 'redux/operations';
+} from 'redux/contact/contactSlice';
+import { setFilter, getFilter } from 'redux/contact/filterSlice';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+} from 'redux/contact/operations';
 import { Wrapper, MainTitle, Title, TextError } from './App.styled';
 import { Loader } from './Loader/Loader';
 

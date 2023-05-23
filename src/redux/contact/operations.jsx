@@ -3,6 +3,16 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://6461dd0e491f9402f4ac4549.mockapi.io/';
 
+// Utility to add JWT
+const setAuthHeader = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+// Utility to remove JWT
+const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = '';
+};
+
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
