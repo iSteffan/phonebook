@@ -1,16 +1,31 @@
-import { Route, Routes } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
+
 export const Navigation = () => {
   return (
-    <Routes>
-      {/* <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="movies" element={<Movies />} />
-        <Route path="movies/:movieId" element={<MovieDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
-        <Route path="*" element={<Home />} />
-      </Route> */}
-    </Routes>
+    <>
+      <header>
+        <ul>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/register">Registration</NavLink>
+          </li>
+          <li>
+            <NavLink to="/login">Login</NavLink>
+          </li>
+          <li>
+            <NavLink to="/contacts">Contacts</NavLink>
+          </li>
+        </ul>
+      </header>
+      <main>
+        <Suspense>
+          <Outlet />
+        </Suspense>
+      </main>
+    </>
   );
 };

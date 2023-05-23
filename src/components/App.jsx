@@ -13,9 +13,17 @@ import {
   fetchContacts,
   addContact,
   deleteContact,
-} from 'redux/contact/operations';
+} from 'redux/contact/contactsOperations';
 import { Wrapper, MainTitle, Title, TextError } from './App.styled';
 import { Loader } from './Loader/Loader';
+import { Route, Routes } from 'react-router-dom';
+import { lazy } from 'react';
+import { Layout } from 'components/Layout/Layout';
+
+const Home = lazy(() => import('../pages/Home'));
+const Register = lazy(() => import('../pages/Register'));
+const Login = lazy(() => import('../pages/Login'));
+const Contacts = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
   const contacts = useSelector(selectContacts);
@@ -68,6 +76,15 @@ export const App = () => {
         contacts={filteredArr()}
         onDelete={doDeleteContact}
       ></ContactList>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
+          <Route path="contacts" element={<Contacts />} />
+          <Route path="*" element={<Home />} />
+        </Route>
+      </Routes>
     </Wrapper>
   );
 };
