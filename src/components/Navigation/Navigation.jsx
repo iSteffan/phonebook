@@ -1,25 +1,25 @@
-import { NavLink } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { Link, List } from './Navigation.styled';
 
 export const Navigation = () => {
   return (
     <>
       <header>
-        <ul>
+        <List>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <NavLink to="/register">Registration</NavLink>
+            <Link to="/register">Registration</Link>
           </li>
           <li>
-            <NavLink to="/login">Login</NavLink>
+            <Link to="/contacts">Contacts</Link>
           </li>
           <li>
-            <NavLink to="/contacts">Contacts</NavLink>
+            <Link to="/login">Login</Link>
           </li>
-        </ul>
+        </List>
       </header>
       <main>
         <Suspense>
