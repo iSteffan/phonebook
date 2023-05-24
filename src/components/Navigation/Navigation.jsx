@@ -1,4 +1,6 @@
 import { Suspense } from 'react';
+import { useSelector } from 'react-redux';
+import { UserMenu } from 'components/UserMenu/UserMenu';
 import { Outlet } from 'react-router-dom';
 import {
   Link,
@@ -7,8 +9,11 @@ import {
   Wrapper,
   StyledHeader,
 } from './Navigation.styled';
+import { selectIsLoggedIn } from 'redux/auth/authSlice';
 
 export const Navigation = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
   return (
     <>
       <StyledHeader>
@@ -18,18 +23,24 @@ export const Navigation = () => {
               <li>
                 <Link to="/">Home</Link>
               </li>
-              <li>
-                <Link to="/contacts">Contacts</Link>
-              </li>
+              {isLoggedIn && (
+                <li>
+                  <Link to="/contacts">Contacts</Link>
+                </li>
+              )}
             </List>
-            <List>
-              <li>
-                <Link to="/register">Registration</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-            </List>
+            {isLoggedIn ? (
+              <UserMenu />
+            ) : (
+              <List>
+                <li>
+                  <Link to="/register">Registration</Link>
+                </li>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+              </List>
+            )}
           </Wrapper>
         </Container>
       </StyledHeader>

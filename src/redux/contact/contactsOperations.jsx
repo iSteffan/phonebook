@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://6461dd0e491f9402f4ac4549.mockapi.io/';
+// axios.defaults.baseURL = 'https://6461dd0e491f9402f4ac4549.mockapi.io/';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
 // Utility to add JWT
 // const setAuthHeader = token => {

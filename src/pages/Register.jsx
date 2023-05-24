@@ -51,7 +51,7 @@ const Register = () => {
           <Field name="password" />
           <ErrorMessage name="password" component="div" />
         </Label>
-        <Btn type="submit">Add contact</Btn>
+        <Btn type="submit">Register</Btn>
       </Form>
     </Formik>
   );
