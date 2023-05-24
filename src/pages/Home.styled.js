@@ -11,5 +11,12 @@ export const StyledButton = styled(Button)`
 `;
 
 export const Wrapper = styled.div`
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
   width: 400px;
+  background-color: #008080c7;
+  border-radius: 12px;
+  /* opacity: 0.5; */
 `;
