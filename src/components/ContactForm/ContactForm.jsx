@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid';
 
 const FormSchema = Yup.object().shape({
   name: Yup.string().required('Required field!'),
-  phone: Yup.number().positive('Must be > 0!').required('Required field!'),
+  number: Yup.number().positive('Must be > 0!').required('Required field!'),
 });
 
 export const ContactForm = ({ onSave }) => {
@@ -14,7 +14,7 @@ export const ContactForm = ({ onSave }) => {
     <Formik
       initialValues={{
         name: '',
-        phone: '',
+        number: '',
       }}
       validationSchema={FormSchema}
       onSubmit={(values, actions) => {
@@ -32,8 +32,8 @@ export const ContactForm = ({ onSave }) => {
         <Label>
           Number
           <br />
-          <Field type="phone" name="phone" />
-          <ErrorMessage name="phone" component="div" />
+          <Field type="number" name="number" />
+          <ErrorMessage name="number" component="div" />
         </Label>
         <Btn type="submit">Add contact</Btn>
       </Form>

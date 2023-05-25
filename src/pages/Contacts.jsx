@@ -3,11 +3,6 @@ import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectContacts,
-  selectIsLoading,
-  selectError,
-} from 'redux/contact/contactSlice';
 import { setFilter, getFilter } from 'redux/contact/filterSlice';
 import {
   fetchContacts,
@@ -16,11 +11,16 @@ import {
 } from 'redux/contact/contactsOperations';
 import { Wrapper, MainTitle, Title, TextError } from '../components/App.styled';
 import { Loader } from 'components/Loader/Loader';
+import { useContact } from 'hooks';
 
 const Contacts = () => {
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const { contacts } = useContact();
+  const { isLoading } = useContact();
+  const { error } = useContact();
+
+  // const contacts = useSelector(selectContacts);
+  // const isLoading = useSelector(selectIsLoading);
+  // const error = useSelector(selectError);
   const filter = useSelector(getFilter);
 
   const dispatch = useDispatch();
