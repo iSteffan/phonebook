@@ -1,13 +1,8 @@
 import styled from 'styled-components';
-import { Button } from '@mui/material';
 
-export const List = styled.ul`
-  list-style: none;
+export const Greetings = styled.h1`
+  color: white;
   font-size: 24px;
-`;
-
-export const StyledButton = styled(Button)`
-  width: 100px;
 `;
 
 export const Wrapper = styled.div`
@@ -16,7 +11,7 @@ export const Wrapper = styled.div`
   margin-right: auto;
   padding: 20px;
   width: 400px;
-  background-color: #008080c7;
+  background-color: rgb(40 113 171);
   border-radius: 12px;
   /* opacity: 0.5; */
 `;

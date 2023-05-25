@@ -6,12 +6,15 @@ export const Link = styled(StyledLink)`
   color: white;
 
   &.active {
-    color: orange;
+    color: yellow;
+    border-bottom: 1px solid yellow;
   }
 `;
 
 export const StyledHeader = styled.header`
-  background-color: #008080c7;
+  background-color: rgb(40 113 171);
+  padding-top: 10px;
+  padding-bottom: 10px;
 `;
 
 export const List = styled.ul`

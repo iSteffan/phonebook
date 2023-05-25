@@ -1,10 +1,14 @@
 import { useNavigate } from 'react-router-dom';
-import { StyledButton, Wrapper, List } from './Home.styled';
-// import { useAuth } from 'hooks';
+import { Wrapper, Greetings } from './Home.styled';
+import { useAuth } from 'hooks';
+import { Button, ButtonGroup } from '@chakra-ui/react';
+import { SlLogin, SlPencil } from 'react-icons/sl';
+import { FaUserCircle } from 'react-icons/fa';
+import { IconContext } from 'react-icons';
 
 const Home = () => {
   const navigate = useNavigate();
-  // const { user } = useAuth();
+  const { user } = useAuth();
 
   const onSignUp = () => {
     navigate('/register');
@@ -14,24 +18,39 @@ const Home = () => {
     navigate('/login');
   };
 
-  // console.log(user.name);
-
   return (
     <>
       <Wrapper>
-        <h1>Welcome dear user, please sign up or log in</h1>
-        <List>
-          <li>
-            <StyledButton variant="contained" onClick={onSignUp}>
-              Sign up
-            </StyledButton>
-          </li>
-          <li>
-            <StyledButton variant="contained" onClick={onLogIn}>
-              Log in
-            </StyledButton>
-          </li>
-        </List>
+        {user.name ? (
+          <>
+            <IconContext.Provider value={{ color: 'white', size: '3em' }}>
+              <FaUserCircle />
+            </IconContext.Provider>
+            <Greetings>Welcome {user.name}</Greetings>
+          </>
+        ) : (
+          <>
+            <Greetings>Welcome dear user, please sign up or log in</Greetings>
+            <ButtonGroup spacing="6">
+              <Button
+                colorScheme="blue"
+                size="md"
+                leftIcon={<SlPencil />}
+                onClick={onSignUp}
+              >
+                Sign up
+              </Button>
+              <Button
+                colorScheme="blue"
+                size="md"
+                leftIcon={<SlLogin />}
+                onClick={onLogIn}
+              >
+                Log in
+              </Button>
+            </ButtonGroup>
+          </>
+        )}
       </Wrapper>
     </>
   );
