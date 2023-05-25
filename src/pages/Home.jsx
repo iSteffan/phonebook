@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { StyledButton, Wrapper, List } from './Home.styled';
+// import { useAuth } from 'hooks';
 
 const Home = () => {
   const navigate = useNavigate();
+  // const { user } = useAuth();
 
   const onSignUp = () => {
     navigate('/register');
@@ -11,6 +13,8 @@ const Home = () => {
   const onLogIn = () => {
     navigate('/login');
   };
+
+  // console.log(user.name);
 
   return (
     <>

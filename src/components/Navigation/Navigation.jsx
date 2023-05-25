@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import { useSelector } from 'react-redux';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { Outlet } from 'react-router-dom';
 import {
@@ -9,10 +8,10 @@ import {
   Wrapper,
   StyledHeader,
 } from './Navigation.styled';
-import { selectIsLoggedIn } from 'redux/auth/authSlice';
+import { useAuth } from 'hooks';
 
 export const Navigation = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const { isLoggedIn } = useAuth();
 
   return (
     <>

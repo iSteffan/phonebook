@@ -3,6 +3,8 @@ import { register } from '../redux/auth/authOperations';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
+// import { useNavigate } from 'react-router-dom';
+// import { selectIsLoggedIn } from 'redux/auth/authSlice';
 
 const FormSchema = Yup.object().shape({
   name: Yup.string().required('Required field!'),
@@ -11,6 +13,8 @@ const FormSchema = Yup.object().shape({
 
 const Register = () => {
   const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <Formik
