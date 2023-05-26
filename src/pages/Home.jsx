@@ -30,6 +30,9 @@ const Home = () => {
           </>
         ) : (
           <>
+            <IconContext.Provider value={{ color: 'white', size: '3em' }}>
+              <FaUserCircle />
+            </IconContext.Provider>
             <Greetings>Welcome dear user, please sign up or log in</Greetings>
             <ButtonGroup spacing="6">
               <Button

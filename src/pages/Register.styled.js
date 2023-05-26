@@ -10,16 +10,24 @@ export const ErrorMessage = styled(FormikErrorMessage)`
 `;
 
 export const Form = styled(FormikForm)`
-  width: 100%;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+
   box-sizing: border-box;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 20px 40px;
 
-  background-color: #039be5;
+  background-color: white;
   border: 1px solid gray;
   border-radius: 12px;
+  min-width: 320px;
+
+  @media screen and (min-width: 480px) {
+    width: 400px;
+  }
 `;
 
 export const Label = styled.label`
