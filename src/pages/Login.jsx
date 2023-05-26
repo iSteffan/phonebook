@@ -3,6 +3,17 @@ import { logIn } from '../redux/auth/authOperations';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
+import {
+  Input,
+  InputGroup,
+  InputRightElement,
+  Button,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+} from '@chakra-ui/react';
+import { useState } from 'react';
 
 const FormSchema = Yup.object().shape({
   //   name: Yup.string().required('Required field!'),
@@ -11,14 +22,25 @@ const FormSchema = Yup.object().shape({
 
 const Login = () => {
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
+
+  // const [input, setInput] = useState('');
+
+  // const handleInputChange = e => setInput(e.target.value);
+
+  // const isError = input === '';
+  function validateName(value) {
+    let error;
+    if (!value) {
+      error = 'Name is required';
+      return error;
+    }
+  }
 
   return (
     <Formik
-      initialValues={{
-        email: '',
-        password: '',
-      }}
-      validationSchema={FormSchema}
+      initialValues={{ email: '', password: '' }}
       onSubmit={(values, actions) => {
         console.log(values);
         dispatch(
@@ -30,23 +52,81 @@ const Login = () => {
         actions.resetForm();
       }}
     >
-      <Form>
-        <Label>
-          Email
-          <br />
-          <Field type="email" name="email" />
-          <ErrorMessage name="email" component="div" />
-        </Label>
-        <Label>
-          Password
-          <br />
-          <Field name="password" />
-          <ErrorMessage name="password" component="div" />
-        </Label>
-        <Btn type="submit">Log in</Btn>
-      </Form>
+      {props => (
+        <Form>
+          <Field name="email" validate={validateName}>
+            {({ field }) => (
+              <FormControl>
+                <FormLabel>Email</FormLabel>
+                <Input {...field} placeholder="email" />
+              </FormControl>
+            )}
+          </Field>
+          <Field name="password">
+            {({ field }) => (
+              <FormControl>
+                <FormLabel>Password</FormLabel>
+                <InputGroup size="md">
+                  <Input
+                    {...field}
+                    pr="4.5rem"
+                    type={show ? 'text' : 'password'}
+                    placeholder="Enter password"
+                  />
+                  <InputRightElement width="4.5rem">
+                    <Button h="1.75rem" size="sm" onClick={handleClick}>
+                      {show ? 'Hide' : 'Show'}
+                    </Button>
+                  </InputRightElement>
+                </InputGroup>
+              </FormControl>
+            )}
+          </Field>
+          <Button
+            mt={4}
+            colorScheme="teal"
+            isLoading={props.isSubmitting}
+            type="submit"
+          >
+            Submit
+          </Button>
+        </Form>
+      )}
     </Formik>
   );
 };
 
 export default Login;
+//     <Formik
+//       initialValues={{
+//         email: '',
+//         password: '',
+//       }}
+//       validationSchema={FormSchema}
+//       onSubmit={(values, actions) => {
+//         console.log(values);
+//         dispatch(
+//           logIn({
+//             email: values.email,
+//             password: values.password,
+//           })
+//         );
+//         actions.resetForm();
+//       }}
+//     >
+//       <Form>
+//         <Label>
+//           Email
+//           <br />
+//           <Field type="email" name="email" />
+//           <ErrorMessage name="email" component="div" />
+//         </Label>
+//         <Label>
+//           Password
+//           <br />
+//           <Field name="password" />
+//           <ErrorMessage name="password" component="div" />
+//         </Label>
+//         <Btn type="submit">Log in</Btn>
+//       </Form>
+//     </Formik>;

@@ -5,6 +5,8 @@ import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 // import { selectIsLoggedIn } from 'redux/auth/authSlice';
+// import { Input, InputGroup, InputRightElement, Button } from '@chakra-ui/react';
+// import { useState } from 'react';
 
 const FormSchema = Yup.object().shape({
   name: Yup.string().required('Required field!'),
@@ -15,6 +17,8 @@ const Register = () => {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
   // const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const [show, setShow] = useState(false);
+  // const handleClick = () => setShow(!show);
 
   return (
     <Formik

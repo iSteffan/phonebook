@@ -10,8 +10,13 @@ export const Wrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
-  width: 400px;
+  min-width: 320px;
+  height: 300px;
   background-color: rgb(40 113 171);
   border-radius: 12px;
   /* opacity: 0.5; */
+
+  @media screen and (min-width: 480px) {
+    width: 400px;
+  }
 `;
