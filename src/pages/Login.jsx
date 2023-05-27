@@ -1,10 +1,9 @@
-// import { Form, Label, Btn, Field, ErrorMessage } from './Register.styled';
 import {
   Form,
   Field,
   ErrorMessageEmail,
   ErrorMessagePassword,
-} from './Register.styled';
+} from './Login.styled';
 import { logIn } from '../redux/auth/authOperations';
 import { Formik } from 'formik';
 import * as Yup from 'yup';

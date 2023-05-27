@@ -17,14 +17,14 @@ const handlePending = state => {
   state.error = null;
 };
 
-const handleRejected = (state, action) => {
+const handleRegisterRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
 
   toast.error(
-    `${action.payload}` === 'Network Error'
+    `${action.payload}` === 'User validation failed'
       ? `${action.payload}`
-      : 'Oops...check your credentials'
+      : 'Oops...this user is already existed'
   );
 };
 
@@ -51,7 +51,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isLoading = false;
       })
-      .addCase(register.rejected, handleRejected)
+      .addCase(register.rejected, handleRegisterRejected)
 
       .addCase(logIn.pending, handlePending)
       .addCase(logIn.fulfilled, (state, action) => {
@@ -71,7 +71,7 @@ const authSlice = createSlice({
         state.error = null;
         state.isLoading = false;
       })
-      .addCase(logOut.rejected, handleRejected)
+      // .addCase(logOut.rejected, handleRejected)
 
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
