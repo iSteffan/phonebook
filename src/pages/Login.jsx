@@ -1,5 +1,10 @@
 // import { Form, Label, Btn, Field, ErrorMessage } from './Register.styled';
-import { Form, Field, ErrorMessage } from './Register.styled';
+import {
+  Form,
+  Field,
+  ErrorMessageEmail,
+  ErrorMessagePassword,
+} from './Register.styled';
 import { logIn } from '../redux/auth/authOperations';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -12,8 +17,6 @@ import {
   FormControl,
   FormLabel,
   IconButton,
-  // FormErrorMessage,
-  // FormHelperText,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { SlLogin } from 'react-icons/sl';
@@ -56,24 +59,24 @@ const Login = () => {
           <Form>
             <Field name="email">
               {({ field }) => (
-                <FormControl isRequired isInvalid={isErrorEmail}>
+                <FormControl isRequired isInvalid={isErrorEmail} mb={3}>
                   <FormLabel>Email</FormLabel>
+                  {/* <InputGroup variant="custom" colorScheme="purple">
+                    <InputLeftAddon>Phone:</InputLeftAddon>
+                    <Input placeholder="Themed Custom Input" />
+                    <InputRightElement pointerEvents="none">
+                      <Icon as={FaPhone} color="green.400" />
+                    </InputRightElement>
+                  </InputGroup> */}
                   <Input
                     {...field}
                     variant="flushed"
                     placeholder="Enter email"
                   />
-                  {/* {!isError ? (
-                    <FormHelperText>
-                      We'll never share your email.
-                    </FormHelperText>
-                  ) : (
-                    <FormErrorMessage>Email is required.</FormErrorMessage>
-                  )} */}
                 </FormControl>
               )}
             </Field>
-            <ErrorMessage name="email" component="div" />
+            <ErrorMessageEmail name="email" component="div" />
             <Field name="password">
               {({ field }) => (
                 <FormControl isRequired isInvalid={isErrorPassword}>
@@ -104,15 +107,12 @@ const Login = () => {
                           onClick={handleClick}
                         ></IconButton>
                       )}
-                      {/* <Button h="1.75rem" size="sm" onClick={handleClick}>
-                        {show ? 'Hide' : 'Show'}
-                      </Button> */}
                     </InputRightElement>
                   </InputGroup>
                 </FormControl>
               )}
             </Field>
-            <ErrorMessage name="password" component="div" />
+            <ErrorMessagePassword name="password" component="div" />
             <Button
               leftIcon={<SlLogin />}
               mt={4}

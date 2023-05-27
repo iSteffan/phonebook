@@ -6,10 +6,28 @@ import {
 } from 'formik';
 
 export const ErrorMessage = styled(FormikErrorMessage)`
+  position: absolute;
+  top: 90px;
   font-size: 14px;
+  color: red;
+`;
+
+export const ErrorMessageEmail = styled(FormikErrorMessage)`
+  position: absolute;
+  top: 90px;
+  font-size: 14px;
+  color: red;
+`;
+
+export const ErrorMessagePassword = styled(FormikErrorMessage)`
+  position: absolute;
+  top: 184px;
+  font-size: 14px;
+  color: red;
 `;
 
 export const Form = styled(FormikForm)`
+  position: relative;
   margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
@@ -37,7 +55,7 @@ export const Label = styled.label`
 
 export const Field = styled(FormikInput)`
   box-sizing: border-box;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   padding: 5px 20px;
   font-size: 20px;
   line-height: 1.5;
