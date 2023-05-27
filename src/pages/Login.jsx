@@ -11,11 +11,13 @@ import {
   Button,
   FormControl,
   FormLabel,
+  IconButton,
   // FormErrorMessage,
   // FormHelperText,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { SlLogin } from 'react-icons/sl';
+import { BiShow, BiHide } from 'react-icons/bi';
 
 const FormSchema = Yup.object().shape({
   email: Yup.string().email().required('Required field!'),
@@ -56,7 +58,11 @@ const Login = () => {
               {({ field }) => (
                 <FormControl isRequired isInvalid={isErrorEmail}>
                   <FormLabel>Email</FormLabel>
-                  <Input {...field} placeholder="Enter email" />
+                  <Input
+                    {...field}
+                    variant="flushed"
+                    placeholder="Enter email"
+                  />
                   {/* {!isError ? (
                     <FormHelperText>
                       We'll never share your email.
@@ -77,12 +83,30 @@ const Login = () => {
                       {...field}
                       pr="4.5rem"
                       type={show ? 'text' : 'password'}
+                      variant="flushed"
                       placeholder="Enter password"
                     />
                     <InputRightElement width="4.5rem">
-                      <Button h="1.75rem" size="sm" onClick={handleClick}>
+                      {show ? (
+                        <IconButton
+                          h="1.75rem"
+                          size="lg"
+                          variant="ghost"
+                          icon={<BiShow />}
+                          onClick={handleClick}
+                        ></IconButton>
+                      ) : (
+                        <IconButton
+                          h="1.75rem"
+                          size="lg"
+                          variant="ghost"
+                          icon={<BiHide />}
+                          onClick={handleClick}
+                        ></IconButton>
+                      )}
+                      {/* <Button h="1.75rem" size="sm" onClick={handleClick}>
                         {show ? 'Hide' : 'Show'}
-                      </Button>
+                      </Button> */}
                     </InputRightElement>
                   </InputGroup>
                 </FormControl>
