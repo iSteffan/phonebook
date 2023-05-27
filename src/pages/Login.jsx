@@ -17,10 +17,14 @@ import {
   FormControl,
   FormLabel,
   IconButton,
+  Icon,
+  InputLeftElement,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { SlLogin } from 'react-icons/sl';
 import { BiShow, BiHide } from 'react-icons/bi';
+import { TfiLock } from 'react-icons/tfi';
+import { AiOutlineMail } from 'react-icons/ai';
 
 const FormSchema = Yup.object().shape({
   email: Yup.string().email().required('Required field!'),
@@ -61,18 +65,16 @@ const Login = () => {
               {({ field }) => (
                 <FormControl isRequired isInvalid={isErrorEmail} mb={3}>
                   <FormLabel>Email</FormLabel>
-                  {/* <InputGroup variant="custom" colorScheme="purple">
-                    <InputLeftAddon>Phone:</InputLeftAddon>
-                    <Input placeholder="Themed Custom Input" />
-                    <InputRightElement pointerEvents="none">
-                      <Icon as={FaPhone} color="green.400" />
-                    </InputRightElement>
-                  </InputGroup> */}
-                  <Input
-                    {...field}
-                    variant="flushed"
-                    placeholder="Enter email"
-                  />
+                  <InputGroup>
+                    <Input
+                      {...field}
+                      variant="flushed"
+                      placeholder="Enter email"
+                    />
+                    <InputLeftElement pointerEvents="none">
+                      <Icon as={AiOutlineMail} color="grey.800" />
+                    </InputLeftElement>
+                  </InputGroup>
                 </FormControl>
               )}
             </Field>
@@ -89,6 +91,9 @@ const Login = () => {
                       variant="flushed"
                       placeholder="Enter password"
                     />
+                    <InputLeftElement pointerEvents="none">
+                      <Icon as={TfiLock} color="grey.800" />
+                    </InputLeftElement>
                     <InputRightElement width="4.5rem">
                       {show ? (
                         <IconButton
