@@ -1,8 +1,8 @@
 // import { Form, Label, Btn, Field, ErrorMessage } from './Register.styled';
-import { Form, Field } from './Register.styled';
+import { Form, Field, ErrorMessage } from './Register.styled';
 import { logIn } from '../redux/auth/authOperations';
 import { Formik } from 'formik';
-// import * as Yup from 'yup';
+import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import {
   Input,
@@ -11,16 +11,16 @@ import {
   Button,
   FormControl,
   FormLabel,
-  // FormErrorMessage,
-  // FormHelperText,
+  FormErrorMessage,
+  FormHelperText,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { SlLogin } from 'react-icons/sl';
 
-// const FormSchema = Yup.object().shape({
-//     name: Yup.string().required('Required field!'),
-//     password: Yup.number().positive('Must be > 0!').required('Required field!'),
-// });
+const FormSchema = Yup.object().shape({
+  email: Yup.string().email().required('Required field!'),
+  password: Yup.mixed().required('Required field!'),
+});
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -29,34 +29,10 @@ const Login = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
-  // const [input, setInput] = useState('');
-
-  // const handleInputChange = e => setInput(e.target.value);
-
-  // let isError
-  // if (handleInputChange === "") {
-  //   isError
-  // }
-  // const isError = input === '';
-  // const [error, setError] = useState(false);
-
-  // const [input, setInput] = useState('');
-
-  // const handleInputChange = e => setInput(e.target.value);
-
-  // const isError = input === '';
-
-  // function validateName(value) {
-  //   let error;
-  //   if (!value) {
-  //     error = 'Name is required';
-  //     return error;
-  //   }
-  // }
-
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
+      validationSchema={FormSchema}
       onSubmit={(values, actions) => {
         console.log(values);
         dispatch(
@@ -69,47 +45,62 @@ const Login = () => {
         actions.resetForm();
       }}
     >
-      {props => (
-        <Form>
-          <Field name="email">
-            {({ field }) => (
-              <FormControl isRequired>
-                <FormLabel>Email</FormLabel>
-                <Input {...field} placeholder="Enter email" />
-              </FormControl>
-            )}
-          </Field>
-          <Field name="password">
-            {({ field }) => (
-              <FormControl isRequired>
-                <FormLabel>Password</FormLabel>
-                <InputGroup size="md">
-                  <Input
-                    {...field}
-                    pr="4.5rem"
-                    type={show ? 'text' : 'password'}
-                    placeholder="Enter password"
-                  />
-                  <InputRightElement width="4.5rem">
-                    <Button h="1.75rem" size="sm" onClick={handleClick}>
-                      {show ? 'Hide' : 'Show'}
-                    </Button>
-                  </InputRightElement>
-                </InputGroup>
-              </FormControl>
-            )}
-          </Field>
-          <Button
-            leftIcon={<SlLogin />}
-            mt={4}
-            colorScheme="blue"
-            isLoading={props.isSubmitting}
-            type="submit"
-          >
-            Log in
-          </Button>
-        </Form>
-      )}
+      {props => {
+        const isErrorEmail = !props.values.email && props.touched.email;
+        const isErrorPassword =
+          !props.values.password && props.touched.password;
+
+        return (
+          <Form>
+            <Field name="email">
+              {({ field }) => (
+                <FormControl isRequired isInvalid={isErrorEmail}>
+                  <FormLabel>Email</FormLabel>
+                  <Input {...field} placeholder="Enter email" />
+                  {/* {!isError ? (
+                    <FormHelperText>
+                      We'll never share your email.
+                    </FormHelperText>
+                  ) : (
+                    <FormErrorMessage>Email is required.</FormErrorMessage>
+                  )} */}
+                </FormControl>
+              )}
+            </Field>
+            <ErrorMessage name="email" component="div" />
+            <Field name="password">
+              {({ field }) => (
+                <FormControl isRequired isInvalid={isErrorPassword}>
+                  <FormLabel>Password</FormLabel>
+                  <InputGroup size="md">
+                    <Input
+                      {...field}
+                      pr="4.5rem"
+                      type={show ? 'text' : 'password'}
+                      placeholder="Enter password"
+                    />
+                    <InputRightElement width="4.5rem">
+                      <Button h="1.75rem" size="sm" onClick={handleClick}>
+                        {show ? 'Hide' : 'Show'}
+                      </Button>
+                    </InputRightElement>
+                  </InputGroup>
+                </FormControl>
+              )}
+            </Field>
+            <ErrorMessage name="password" component="div" />
+            <Button
+              leftIcon={<SlLogin />}
+              mt={4}
+              colorScheme="blue"
+              isLoading={props.isSubmitting}
+              type="submit"
+            >
+              Log in
+            </Button>
+          </Form>
+        );
+      }}
     </Formik>
   );
 };
