@@ -21,7 +21,7 @@ export const UserMenu = () => {
         // size={'1.5em'}
       >
         <FaRegUser />
-        {user.name}s
+        {user.name}
       </Box>
       <Button
         colorScheme="blue"
