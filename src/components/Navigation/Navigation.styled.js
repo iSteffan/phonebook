@@ -19,6 +19,7 @@ export const StyledHeader = styled.header`
 
 export const List = styled.ul`
   display: flex;
+  align-items: center;
   padding: 0;
   list-style: none;
   gap: 40px;

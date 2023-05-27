@@ -3,6 +3,17 @@ import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { nanoid } from 'nanoid';
+import {
+  Input,
+  InputGroup,
+  InputRightElement,
+  Button,
+  FormControl,
+  FormLabel,
+  IconButton,
+  Icon,
+  InputLeftElement,
+} from '@chakra-ui/react';
 
 const FormSchema = Yup.object().shape({
   name: Yup.string().required('Required field!'),
