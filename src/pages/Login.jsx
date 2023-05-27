@@ -11,8 +11,8 @@ import {
   Button,
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
+  // FormErrorMessage,
+  // FormHelperText,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { SlLogin } from 'react-icons/sl';
@@ -29,9 +29,9 @@ const Login = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
-  const [input, setInput] = useState('');
+  // const [input, setInput] = useState('');
 
-  const handleInputChange = e => setInput(e.target.value);
+  // const handleInputChange = e => setInput(e.target.value);
 
   // let isError
   // if (handleInputChange === "") {
@@ -44,7 +44,7 @@ const Login = () => {
 
   // const handleInputChange = e => setInput(e.target.value);
 
-  const isError = input === '';
+  // const isError = input === '';
 
   // function validateName(value) {
   //   let error;
@@ -73,21 +73,9 @@ const Login = () => {
         <Form>
           <Field name="email">
             {({ field }) => (
-              <FormControl isRequired isInvalid={isError}>
+              <FormControl isRequired>
                 <FormLabel>Email</FormLabel>
-                <Input
-                  {...field}
-                  value={input}
-                  onChange={handleInputChange}
-                  placeholder="Enter email"
-                />
-                {!isError ? (
-                  <FormHelperText>
-                    Enter the email you'd like to receive the newsletter on.
-                  </FormHelperText>
-                ) : (
-                  <FormErrorMessage>Email is required.</FormErrorMessage>
-                )}
+                <Input {...field} placeholder="Enter email" />
               </FormControl>
             )}
           </Field>
