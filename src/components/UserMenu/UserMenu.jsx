@@ -1,30 +1,36 @@
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/authOperations';
 import { useAuth } from 'hooks';
-import { Button } from '@chakra-ui/react';
+import { Button, Box } from '@chakra-ui/react';
 import { SlLogout } from 'react-icons/sl';
-import { Wrapper, Name } from './UserMenu.styled';
 import { FaRegUser } from 'react-icons/fa';
-import { IconContext } from 'react-icons';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
 
   return (
-    <Wrapper>
-      <IconContext.Provider value={{ color: 'white', size: '1.5em' }}>
+    <Box display="flex" alignItems="center" gap="10px">
+      <Box
+        display="flex"
+        gap="10px"
+        alignItems="center"
+        color={'white'}
+        height={{ base: '24px', md: '33px' }}
+        fontSize={{ base: '16px', md: '24px' }}
+        // size={'1.5em'}
+      >
         <FaRegUser />
-      </IconContext.Provider>
-      <Name>{user.name}</Name>
+        {user.name}s
+      </Box>
       <Button
         colorScheme="blue"
-        size="md"
+        size={{ base: 'xs', md: 'lg' }}
         leftIcon={<SlLogout />}
         onClick={() => dispatch(logOut())}
       >
         Logout
       </Button>
-    </Wrapper>
+    </Box>
   );
 };
