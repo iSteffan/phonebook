@@ -4,26 +4,13 @@ import {
   ContactName,
   ContactPhone,
 } from './ContactList.styled';
-// import {
-//   Form,
-//   Field,
-//   ErrorMessageName,
-//   ErrorMessageNumber,
-// } from '../ContactForm/ContactForm.styled';
 import PropTypes from 'prop-types';
 import { FiUser } from 'react-icons/fi';
 import { BsTelephone } from 'react-icons/bs';
 import { ButtonGroup, IconButton } from '@chakra-ui/button';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { GrConfigure } from 'react-icons/gr';
-// import { AiOutlineUserAdd } from 'react-icons/ai';
-// import { Formik } from 'formik';
-// import * as Yup from 'yup';
-// import { nanoid } from 'nanoid';
-// import { editContact } from 'redux/contact/contactsOperations';
-// import { useDispatch } from 'react-redux';
-import { ContactModalWindow } from 'components/Modal/Modal';
-
+import { ContactModalWindow } from 'components/ContactModalWindow/ContactModalWindow';
 import { useState } from 'react';
 
 export const ContactList = ({ contacts, onDelete }) => {

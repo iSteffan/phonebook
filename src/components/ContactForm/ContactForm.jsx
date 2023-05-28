@@ -11,11 +11,9 @@ import { nanoid } from 'nanoid';
 import {
   Input,
   InputGroup,
-  // InputRightElement,
   Button,
   FormControl,
   FormLabel,
-  // IconButton,
   Icon,
   InputLeftElement,
 } from '@chakra-ui/react';

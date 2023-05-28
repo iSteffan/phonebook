@@ -1,15 +1,10 @@
-// import {
-//   List,
-//   ListItem,
-//   ContactName,
-//   ContactPhone,
-// } from './ContactList.styled';
 import {
   Form,
   Field,
   ErrorMessageName,
   ErrorMessageNumber,
-} from '../ContactForm/ContactForm.styled';
+} from './ContactModalWindow.styled';
+import PropTypes from 'prop-types';
 import {
   Modal,
   ModalOverlay,
@@ -24,27 +19,36 @@ import {
   InputGroup,
   Input,
 } from '@chakra-ui/react';
-// import PropTypes from 'prop-types';
 import { FiUser } from 'react-icons/fi';
 import { BsTelephone } from 'react-icons/bs';
 import { Button } from '@chakra-ui/button';
-// import { AiOutlineDelete } from 'react-icons/ai';
-// import { GrConfigure } from 'react-icons/gr';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { Formik } from 'formik';
-// import * as Yup from 'yup';
-// import { nanoid } from 'nanoid';
 import { editContact } from 'redux/contact/contactsOperations';
 import { useDispatch } from 'react-redux';
+import * as Yup from 'yup';
+
+const FormSchema = Yup.object().shape({
+  name: Yup.string().required('Required field!'),
+  number: Yup.string().required('Required field!'),
+});
 
 export const ContactModalWindow = ({ contact, isOpen, onClose }) => {
-  //   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent>
+    <Modal
+      closeOnOverlayClick={false}
+      isCentered
+      isOpen={isOpen}
+      onClose={onClose}
+      motionPreset="slideInBottom"
+    >
+      <ModalOverlay
+        bg="blackAlpha.300"
+        backdropFilter="blur(10px) hue-rotate(90deg)"
+      />
+      <ModalContent w={'300px'}>
         <ModalHeader>Редагування контакту</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
@@ -53,10 +57,8 @@ export const ContactModalWindow = ({ contact, isOpen, onClose }) => {
               name: contact.name,
               number: contact.number,
             }}
-            // validationSchema={FormSchema}
+            validationSchema={FormSchema}
             onSubmit={(values, actions) => {
-              // console.log('name', values.name);
-              // console.log('number', values.number);
               dispatch(
                 editContact({
                   id: contact.id,
@@ -64,7 +66,6 @@ export const ContactModalWindow = ({ contact, isOpen, onClose }) => {
                   number: values.number,
                 })
               );
-              // onSave({ ...values, id: nanoid() });
               actions.resetForm();
             }}
           >
@@ -127,18 +128,13 @@ export const ContactModalWindow = ({ contact, isOpen, onClose }) => {
             }}
           </Formik>
         </ModalBody>
-
-        {/* <ModalFooter>
-                  <Button colorScheme="blue" mr={3} onClick={onClose}>
-                    Close
-                  </Button>
-                </ModalFooter> */}
       </ModalContent>
     </Modal>
   );
 };
 
-// ContactList.propTypes = {
-//   contacts: PropTypes.array.isRequired,
-//   onDelete: PropTypes.func.isRequired,
-// };
+ContactModalWindow.propTypes = {
+  contact: PropTypes.object.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
