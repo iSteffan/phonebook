@@ -34,7 +34,6 @@ export const Form = styled(FormikForm)`
   background-color: white;
   border: 1px solid gray;
   border-radius: 12px;
-  min-width: 320px;
 
   @media screen and (min-width: 480px) {
     width: 400px;
@@ -47,7 +46,7 @@ export const Field = styled(FormikInput)`
   padding: 5px 20px;
   font-size: 20px;
   line-height: 1.5;
-  width: 100%;
+  /* width: 100%; */
   /* height: 40px; */
   border-radius: 12px;
 `;

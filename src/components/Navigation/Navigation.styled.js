@@ -15,6 +15,8 @@ export const StyledHeader = styled.header`
   background-color: rgb(40 113 171);
   padding-top: 10px;
   padding-bottom: 10px;
+
+  /* min-width: 320px; */
 `;
 
 export const List = styled.ul`
@@ -44,9 +46,9 @@ export const Container = styled.div`
   padding-right: 15px;
   min-width: 320px;
 
-  @media screen and (min-width: 480px) {
+  /* @media screen and (min-width: 480px) {
     width: 480px;
-  }
+  } */
 
   @media screen and (min-width: 768px) {
     width: 768px;

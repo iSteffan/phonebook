@@ -9,7 +9,7 @@ import {
   addContact,
   deleteContact,
 } from 'redux/contact/contactsOperations';
-import { Wrapper, MainTitle, Title, TextError } from './Contacts.styled';
+import { MainTitle, Title, TextError } from './Contacts.styled';
 import { Loader } from 'components/Loader/Loader';
 import { useContact } from 'hooks';
 import { toast } from 'react-toastify';
@@ -58,15 +58,13 @@ const Contacts = () => {
     }
   };
   return (
-    <Wrapper>
+    <div>
       <MainTitle>Phonebook</MainTitle>
       <ContactForm onSave={doAddContact} />
-
       {contacts.length !== 0 && <Title>Contacts</Title>}
       {contacts.length > 0 && (
         <Filter filter={filter} handleInputChange={handleInputChange}></Filter>
       )}
-
       {isLoading ? (
         <Loader />
       ) : (
@@ -76,7 +74,7 @@ const Contacts = () => {
         ></ContactList>
       )}
       {error && <TextError>Oops, something wrong is going on...</TextError>}
-    </Wrapper>
+    </div>
   );
 };
 

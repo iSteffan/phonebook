@@ -39,7 +39,11 @@ export const ContactList = ({ contacts, onDelete }) => {
               <BsTelephone />
               {contact.number}
             </ContactPhone>
-            <ButtonGroup size="lg" isAttached variant="solid">
+            <ButtonGroup
+              size={{ base: 'sm', md: 'lg' }}
+              isAttached
+              variant="solid"
+            >
               <IconButton
                 colorScheme="blue"
                 aria-label="change contact"

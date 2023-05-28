@@ -12,7 +12,13 @@ import { FiUser } from 'react-icons/fi';
 
 export const Filter = ({ handleInputChange, filter }) => {
   return (
-    <FormControl mr={'auto'} ml={'auto'} mb={3} w={'80%'}>
+    <FormControl
+      mr={'auto'}
+      ml={'auto'}
+      mb={3}
+      minWidth={'320px'}
+      w={{ base: '320px', md: '400px' }}
+    >
       <FormLabel>Sort contacts by Name:</FormLabel>
       <InputGroup>
         <Input
