@@ -96,21 +96,6 @@ export const ContactForm = ({ onSave }) => {
           </Form>
         );
       }}
-      {/* <Form>
-        <Label>
-          Name
-          <br />
-          <Field name="name" />
-          <ErrorMessage name="name" component="div" />
-        </Label>
-        <Label>
-          Number
-          <br />
-          <Field type="number" name="number" />
-          <ErrorMessage name="number" component="div" />
-        </Label>
-        <Btn type="submit">Add contact</Btn>
-      </Form> */}
     </Formik>
   );
 };

@@ -10,10 +10,10 @@ export const UserMenu = () => {
   const { user } = useAuth();
 
   return (
-    <Box display="flex" alignItems="center" gap="10px">
+    <Box display="flex" alignItems="center" gap="5px">
       <Box
         display="flex"
-        gap="10px"
+        gap="5px"
         alignItems="center"
         color={'white'}
         height={{ base: '24px', md: '33px' }}

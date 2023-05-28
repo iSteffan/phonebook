@@ -27,6 +27,7 @@ export const List = styled.ul`
   font-size: 24px;
 
   @media screen and (min-width: 320px) and (max-width: 767px) {
+    gap: 20px;
     font-size: 16px;
   }
 `;
