@@ -37,6 +37,7 @@ import { Formik } from 'formik';
 // import { nanoid } from 'nanoid';
 import { editContact } from 'redux/contact/contactsOperations';
 import { useDispatch } from 'react-redux';
+import { ContactModalWindow } from 'components/Modal/Modal';
 
 export const ContactList = ({ contacts, onDelete }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -69,7 +70,25 @@ export const ContactList = ({ contacts, onDelete }) => {
                 onClick={() => onDelete(contact.id)}
               />
             </ButtonGroup>
-            <Modal isOpen={isOpen} onClose={onClose}>
+            <ContactModalWindow
+              contact={contact}
+              isOpen={isOpen}
+              onClose={onClose}
+            />
+          </ListItem>
+        );
+      })}
+    </List>
+  );
+};
+
+ContactList.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
+
+{
+  /* <Modal isOpen={isOpen} onClose={onClose}>
               <ModalOverlay />
               <ModalContent>
                 <ModalHeader>Редагування контакту</ModalHeader>
@@ -155,22 +174,6 @@ export const ContactList = ({ contacts, onDelete }) => {
                     }}
                   </Formik>
                 </ModalBody>
-
-                {/* <ModalFooter>
-                  <Button colorScheme="blue" mr={3} onClick={onClose}>
-                    Close
-                  </Button>
-                </ModalFooter> */}
               </ModalContent>
-            </Modal>
-          </ListItem>
-        );
-      })}
-    </List>
-  );
-};
-
-ContactList.propTypes = {
-  contacts: PropTypes.array.isRequired,
-  onDelete: PropTypes.func.isRequired,
-};
+            </Modal> */
+}
