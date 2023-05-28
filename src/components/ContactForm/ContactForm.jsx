@@ -49,7 +49,7 @@ export const ContactForm = ({ onSave }) => {
           <Form>
             <Field name="name">
               {({ field }) => (
-                <FormControl isRequired isInvalid={isErrorName} mb={3}>
+                <FormControl isInvalid={isErrorName} mb={3}>
                   <FormLabel>Name</FormLabel>
                   <InputGroup>
                     <Input
@@ -67,7 +67,7 @@ export const ContactForm = ({ onSave }) => {
             <ErrorMessageName name="name" component="div" />
             <Field name="number">
               {({ field }) => (
-                <FormControl isRequired isInvalid={isErrorNumber}>
+                <FormControl isInvalid={isErrorNumber}>
                   <FormLabel>Number</FormLabel>
                   <InputGroup size="md">
                     <Input

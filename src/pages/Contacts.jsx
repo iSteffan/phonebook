@@ -62,13 +62,19 @@ const Contacts = () => {
       <MainTitle>Phonebook</MainTitle>
       <ContactForm onSave={doAddContact} />
       <Title>Contacts</Title>
-      <Filter filter={filter} handleInputChange={handleInputChange}></Filter>
-      {isLoading && <Loader />}
+      {contacts.length > 0 && (
+        <Filter filter={filter} handleInputChange={handleInputChange}></Filter>
+      )}
+
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <ContactList
+          contacts={filteredArr()}
+          onDelete={doDeleteContact}
+        ></ContactList>
+      )}
       {error && <TextError>Oops, something wrong is going on...</TextError>}
-      <ContactList
-        contacts={filteredArr()}
-        onDelete={doDeleteContact}
-      ></ContactList>
     </Wrapper>
   );
 };
