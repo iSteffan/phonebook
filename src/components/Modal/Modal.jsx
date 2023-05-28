@@ -17,7 +17,6 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
-  useDisclosure,
   Icon,
   InputLeftElement,
   FormControl,
@@ -28,7 +27,7 @@ import {
 // import PropTypes from 'prop-types';
 import { FiUser } from 'react-icons/fi';
 import { BsTelephone } from 'react-icons/bs';
-import { Button, ButtonGroup, IconButton } from '@chakra-ui/button';
+import { Button } from '@chakra-ui/button';
 // import { AiOutlineDelete } from 'react-icons/ai';
 // import { GrConfigure } from 'react-icons/gr';
 import { AiOutlineUserAdd } from 'react-icons/ai';
