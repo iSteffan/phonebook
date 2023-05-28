@@ -48,7 +48,7 @@ export const ContactModalWindow = ({ contact, isOpen, onClose }) => {
         bg="blackAlpha.300"
         backdropFilter="blur(10px) hue-rotate(90deg)"
       />
-      <ModalContent w={'300px'}>
+      <ModalContent minWidth={'320px'} w={{ base: '320px', md: '400px' }}>
         <ModalHeader>Редагування контакту</ModalHeader>
         <ModalCloseButton />
         <ModalBody>

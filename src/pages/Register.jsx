@@ -50,7 +50,6 @@ const Register = () => {
       }}
       validationSchema={FormSchema}
       onSubmit={(values, actions) => {
-        console.log(values);
         dispatch(
           register({
             name: values.name,

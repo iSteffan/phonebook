@@ -42,7 +42,6 @@ const Login = () => {
       initialValues={{ email: '', password: '' }}
       validationSchema={FormSchema}
       onSubmit={(values, actions) => {
-        console.log(values);
         dispatch(
           logIn({
             email: values.email,
@@ -134,36 +133,3 @@ const Login = () => {
 };
 
 export default Login;
-//     <Formik
-//       initialValues={{
-//         email: '',
-//         password: '',
-//       }}
-//       validationSchema={FormSchema}
-//       onSubmit={(values, actions) => {
-//         console.log(values);
-//         dispatch(
-//           logIn({
-//             email: values.email,
-//             password: values.password,
-//           })
-//         );
-//         actions.resetForm();
-//       }}
-//     >
-//       <Form>
-//         <Label>
-//           Email
-//           <br />
-//           <Field type="email" name="email" />
-//           <ErrorMessage name="email" component="div" />
-//         </Label>
-//         <Label>
-//           Password
-//           <br />
-//           <Field name="password" />
-//           <ErrorMessage name="password" component="div" />
-//         </Label>
-//         <Btn type="submit">Log in</Btn>
-//       </Form>
-//     </Formik>;
