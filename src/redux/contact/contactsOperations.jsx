@@ -39,14 +39,46 @@ export const deleteContact = createAsyncThunk(
   }
 );
 
-export const patchContact = createAsyncThunk(
+// export const editContact = createAsyncThunk(
+//   'contacts/editContact',
+//   async (contactId, contact) => {
+//     try {
+//       console.log('contactId', contactId);
+//       console.log('contact', contact);
+//       const { data } = await axios.patch(`/contacts/${contactId}`, contact);
+//       return data;
+//     } catch (error) {
+//       console.log(error.message);
+//     }
+//   }
+// );
+export const editContact = createAsyncThunk(
   'contacts/editContact',
-  async (contactId, contact) => {
+  async (data, { rejectWithValue }) => {
     try {
-      const { data } = await axios.patch(`/contacts/${contactId}`, contact);
-      return data;
+      console.log('data', data);
+      // console.log('contact', contact);
+      const response = await axios.patch(`/contacts/${data.id}`, {
+        name: data.name,
+        number: data.number,
+      });
+      return response.data;
     } catch (error) {
       console.log(error.message);
     }
   }
 );
+// export const redactContatc = createAsyncThunk(
+//   'contacts/redactContatc',
+//   async (data, { rejectWithValue }) => {
+//     try {
+//       const response = await axios.patch(`/contacts/${data.id}`, {
+//         name: data.name,
+//         number: data.number,
+//       });
+//       return response.data;
+//     } catch (e) {
+//       return rejectWithValue(e.message);
+//     }
+//   }
+// );

@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './contactsOperations';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  editContact,
+} from './contactsOperations';
 
 const handlePending = state => {
   return { ...state, isLoading: true };
@@ -38,17 +43,42 @@ const contactsSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  extraReducers: {
-    [fetchContacts.pending]: handlePending,
-    [addContact.pending]: handlePending,
-    [deleteContact.pending]: handlePending,
-    [fetchContacts.rejected]: handleRejected,
-    [addContact.rejected]: handleRejected,
-    [deleteContact.rejected]: handleRejected,
-    [fetchContacts.fulfilled]: handleFetchContactsSuccess,
-    [addContact.fulfilled]: handleAddContactSuccess,
-    [deleteContact.fulfilled]: handleDeleteContactSuccess,
+  extraReducers: builder => {
+    builder
+      .addCase(fetchContacts.pending, handlePending)
+      .addCase(addContact.pending, handlePending)
+      .addCase(deleteContact.pending, handlePending)
+      .addCase(editContact.pending, handlePending)
+
+      .addCase(fetchContacts.rejected, handleRejected)
+      .addCase(addContact.rejected, handleRejected)
+      .addCase(deleteContact.rejected, handleRejected)
+      .addCase(editContact.rejected, handleRejected)
+
+      .addCase(fetchContacts.fulfilled, handleFetchContactsSuccess)
+      .addCase(addContact.fulfilled, handleAddContactSuccess)
+      .addCase(deleteContact.fulfilled, handleDeleteContactSuccess)
+      .addCase(editContact.fulfilled, (state, action) => {
+        const index = state.items.findIndex(
+          task => task.id === action.payload.id
+        );
+        state.items.splice(index, 1);
+        state.items.unshift(action.payload);
+        state.isLoading = false;
+        state.error = null;
+      });
   },
+  // extraReducers: {
+  //   [fetchContacts.pending]: handlePending,
+  //   [addContact.pending]: handlePending,
+  //   [deleteContact.pending]: handlePending,
+  //   [fetchContacts.rejected]: handleRejected,
+  //   [addContact.rejected]: handleRejected,
+  //   [deleteContact.rejected]: handleRejected,
+  //   [fetchContacts.fulfilled]: handleFetchContactsSuccess,
+  //   [addContact.fulfilled]: handleAddContactSuccess,
+  //   [deleteContact.fulfilled]: handleDeleteContactSuccess,
+  // },
 });
 
 export const contactsReducer = contactsSlice.reducer;

@@ -15,7 +15,6 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   useDisclosure,
@@ -36,7 +35,7 @@ import { AiOutlineUserAdd } from 'react-icons/ai';
 import { Formik } from 'formik';
 // import * as Yup from 'yup';
 // import { nanoid } from 'nanoid';
-import { patchContact } from 'redux/contact/contactsOperations';
+import { editContact } from 'redux/contact/contactsOperations';
 import { useDispatch } from 'react-redux';
 
 export const ContactList = ({ contacts, onDelete }) => {
@@ -83,6 +82,15 @@ export const ContactList = ({ contacts, onDelete }) => {
                     }}
                     // validationSchema={FormSchema}
                     onSubmit={(values, actions) => {
+                      // console.log('name', values.name);
+                      // console.log('number', values.number);
+                      dispatch(
+                        editContact({
+                          id: contact.id,
+                          name: values.name,
+                          number: values.number,
+                        })
+                      );
                       // onSave({ ...values, id: nanoid() });
                       actions.resetForm();
                     }}
@@ -140,7 +148,7 @@ export const ContactList = ({ contacts, onDelete }) => {
                             isLoading={props.isSubmitting}
                             type="submit"
                           >
-                            Add contact
+                            Change contact
                           </Button>
                         </Form>
                       );
@@ -148,11 +156,11 @@ export const ContactList = ({ contacts, onDelete }) => {
                   </Formik>
                 </ModalBody>
 
-                <ModalFooter>
+                {/* <ModalFooter>
                   <Button colorScheme="blue" mr={3} onClick={onClose}>
                     Close
                   </Button>
-                </ModalFooter>
+                </ModalFooter> */}
               </ModalContent>
             </Modal>
           </ListItem>
