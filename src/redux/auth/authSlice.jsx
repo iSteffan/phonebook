@@ -24,7 +24,7 @@ const handleRegisterRejected = (state, action) => {
   toast.error(
     `${action.payload}` === 'User validation failed'
       ? `${action.payload}`
-      : 'Oops...this user is already existed'
+      : 'Oops...try to use another credentials'
   );
 };
 

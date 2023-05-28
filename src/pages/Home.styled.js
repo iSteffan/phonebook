@@ -6,7 +6,7 @@ export const Greetings = styled.h1`
 `;
 
 export const Wrapper = styled.div`
-  margin-top: 100px;
+  margin-top: 65px;
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
