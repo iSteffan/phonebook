@@ -48,7 +48,7 @@ export const ContactModalWindow = ({ contact, isOpen, onClose }) => {
         bg="blackAlpha.300"
         backdropFilter="blur(10px) hue-rotate(90deg)"
       />
-      <ModalContent minWidth={'320px'} w={{ base: '320px', md: '400px' }}>
+      <ModalContent w={{ base: '320px', md: '400px' }}>
         <ModalHeader>Редагування контакту</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
@@ -98,10 +98,9 @@ export const ContactModalWindow = ({ contact, isOpen, onClose }) => {
                     {({ field }) => (
                       <FormControl isInvalid={isErrorNumber}>
                         <FormLabel>Number</FormLabel>
-                        <InputGroup size="md">
+                        <InputGroup>
                           <Input
                             {...field}
-                            pr="4.5rem"
                             variant="filled"
                             placeholder="Enter number"
                             type="tel"
