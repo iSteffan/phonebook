@@ -25,7 +25,7 @@ import { BsTelephone } from 'react-icons/bs';
 
 const FormSchema = Yup.object().shape({
   name: Yup.string().required('Required field!'),
-  number: Yup.number().positive('Must be > 0!').required('Required field!'),
+  number: Yup.string().required('Required field!'),
 });
 
 export const ContactForm = ({ onSave }) => {
@@ -54,7 +54,7 @@ export const ContactForm = ({ onSave }) => {
                   <InputGroup>
                     <Input
                       {...field}
-                      variant="flushed"
+                      variant="filled"
                       placeholder="Enter name"
                     />
                     <InputLeftElement pointerEvents="none">
@@ -73,8 +73,9 @@ export const ContactForm = ({ onSave }) => {
                     <Input
                       {...field}
                       pr="4.5rem"
-                      variant="flushed"
+                      variant="filled"
                       placeholder="Enter number"
+                      type="tel"
                     />
                     <InputLeftElement pointerEvents="none">
                       <Icon as={BsTelephone} color="grey.800" />

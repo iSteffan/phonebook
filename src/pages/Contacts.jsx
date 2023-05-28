@@ -12,6 +12,8 @@ import {
 import { Wrapper, MainTitle, Title, TextError } from '../components/App.styled';
 import { Loader } from 'components/Loader/Loader';
 import { useContact } from 'hooks';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contacts = () => {
   const { contacts } = useContact();
@@ -50,7 +52,7 @@ const Contacts = () => {
         contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
       )
     ) {
-      alert(`${newContact.name} is already in contacts`);
+      toast.warning(`${newContact.name} is already in contacts`);
     } else {
       dispatch(addContact(newContact));
     }
