@@ -20,9 +20,6 @@ const Contacts = () => {
   const { isLoading } = useContact();
   const { error } = useContact();
 
-  // const contacts = useSelector(selectContacts);
-  // const isLoading = useSelector(selectIsLoading);
-  // const error = useSelector(selectError);
   const filter = useSelector(getFilter);
 
   const dispatch = useDispatch();
