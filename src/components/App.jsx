@@ -8,7 +8,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PageLoader } from './RefreshLoader/RefreshLoader';
 import { Container } from './Navigation/Navigation.styled';
-import { ToastContainer } from 'react-toastify'; // для вспливаючих повідомлень
+import { ToastContainer } from 'react-toastify';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));

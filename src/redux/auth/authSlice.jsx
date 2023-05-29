@@ -8,35 +8,25 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
-  error: null,
   isLoading: false,
 };
 
 const handlePending = state => {
   state.isLoading = true;
-  state.error = null;
 };
 
-const handleRegisterRejected = (state, action) => {
+const handleRegisterRejected = state => {
   state.isLoading = false;
-  state.error = action.payload;
-
-  toast.error(
-    `${action.payload}` === 'User validation failed'
-      ? `${action.payload}`
-      : 'Oops...try to use another credentials'
-  );
+  toast.error('Account creation failed', {
+    draggable: false,
+  });
 };
 
-const handleLogInRejected = (state, action) => {
+const handleLogInRejected = state => {
   state.isLoading = false;
-  state.error = action.payload;
-
-  toast.error(
-    `${action.payload}` === 'Network Error'
-      ? `${action.payload}`
-      : 'Oops...check your credentials'
-  );
+  toast.error('Oops...check your credentials', {
+    draggable: false,
+  });
 };
 
 const authSlice = createSlice({
@@ -68,7 +58,6 @@ const authSlice = createSlice({
         state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
-        state.error = null;
         state.isLoading = false;
       })
       // .addCase(logOut.rejected, handleRejected)
