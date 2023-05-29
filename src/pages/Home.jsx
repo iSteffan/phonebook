@@ -7,7 +7,6 @@ import { FaUserCircle } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 import { TiContacts } from 'react-icons/ti';
 import { AiOutlineUserAdd } from 'react-icons/ai';
-
 import { SlLogout } from 'react-icons/sl';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/authOperations';
