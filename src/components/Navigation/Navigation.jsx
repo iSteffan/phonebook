@@ -1,6 +1,4 @@
-import { Suspense } from 'react';
 import { UserMenu } from 'components/UserMenu/UserMenu';
-import { Outlet } from 'react-router-dom';
 import {
   Link,
   List,
@@ -43,13 +41,6 @@ export const Navigation = () => {
           </Wrapper>
         </Container>
       </StyledHeader>
-      <main>
-        <Container>
-          <Suspense>
-            <Outlet />
-          </Suspense>
-        </Container>
-      </main>
     </>
   );
 };
