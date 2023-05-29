@@ -49,7 +49,9 @@ const Contacts = () => {
         contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
       )
     ) {
-      toast.warning(`${newContact.name} is already in contacts`);
+      toast.warning(`${newContact.name} is already in contacts`, {
+        draggable: false,
+      });
     } else {
       dispatch(addContact(newContact));
     }
