@@ -49,9 +49,9 @@ export const ContactModalWindow = ({ contact, isOpen, onClose }) => {
         backdropFilter="blur(10px) hue-rotate(90deg)"
       />
       <ModalContent w={{ base: '320px', md: '400px' }}>
-        <ModalHeader>Редагування контакту</ModalHeader>
+        <ModalHeader p={'10px 15px 0px 15px'}>Edit Contact</ModalHeader>
         <ModalCloseButton />
-        <ModalBody>
+        <ModalBody p={'8px 15px 8px 15px'}>
           <Formik
             initialValues={{
               name: contact.name,
