@@ -19,7 +19,7 @@ export const register = createAsyncThunk(
 
       // const { data } = await axios.post('/users/signup', credentials);
       // після успішного registration - додати токен до звголовка http
-      setAuthHeader(data.token);
+      // setAuthHeader(data.token);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -58,7 +58,7 @@ export const refreshUser = createAsyncThunk(
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
 
-    if (persistedToken === null) {
+    if (persistedToken === '') {
       // якщо немає токену - вийти без запиту
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
