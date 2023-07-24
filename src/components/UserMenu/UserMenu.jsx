@@ -8,7 +8,7 @@ import { FaRegUser } from 'react-icons/fa';
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
-  console.log(user);
+  // console.log(user);
   return (
     <Box display="flex" alignItems="center" gap="5px">
       <Box
