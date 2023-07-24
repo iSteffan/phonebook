@@ -12,7 +12,9 @@ import { AiOutlineDelete } from 'react-icons/ai';
 import { GrConfigure } from 'react-icons/gr';
 import { ContactModalWindow } from 'components/ContactModalWindow/ContactModalWindow';
 import { useState } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchContacts } from 'redux/contact/contactsOperations';
 export const ContactList = ({ contacts, onDelete }) => {
   const [isOpen, setIsOpen] = useState({});
 
@@ -22,6 +24,12 @@ export const ContactList = ({ contacts, onDelete }) => {
 
   const handleClose = contactId => {
     setIsOpen(prevIsOpen => ({ ...prevIsOpen, [contactId]: false }));
+  };
+  const dispatch = useDispatch();
+
+  const handleDelete = contactId => {
+    onDelete(contactId);
+    dispatch(fetchContacts());
   };
 
   return (
@@ -54,7 +62,7 @@ export const ContactList = ({ contacts, onDelete }) => {
                 colorScheme="gray"
                 aria-label="delete contact"
                 icon={<AiOutlineDelete />}
-                onClick={() => onDelete(contact._id)}
+                onClick={() => handleDelete(contact._id)}
               />
             </ButtonGroup>
             <ContactModalWindow
