@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const initialState = {
   user: { name: null, email: null },
-  token: null,
+  token: '',
   isLoggedIn: false,
   isRefreshing: false,
   isLoading: false,
@@ -16,6 +16,8 @@ const handlePending = state => {
 };
 
 const handleRegisterRejected = state => {
+  state.user = { name: null, email: null };
+  state.token = '';
   state.isLoading = false;
   toast.error('Account creation failed', {
     draggable: false,
@@ -55,7 +57,7 @@ const authSlice = createSlice({
       .addCase(logOut.pending, handlePending)
       .addCase(logOut.fulfilled, state => {
         state.user = { name: null, email: null };
-        state.token = null;
+        state.token = '';
         state.isLoggedIn = false;
         state.isRefreshing = false;
         state.isLoading = false;

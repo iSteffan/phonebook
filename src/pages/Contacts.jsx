@@ -39,6 +39,8 @@ const Contacts = () => {
     return filteredContacts;
   };
 
+  console.log(contacts);
+
   const doDeleteContact = id => {
     dispatch(deleteContact(id));
   };
