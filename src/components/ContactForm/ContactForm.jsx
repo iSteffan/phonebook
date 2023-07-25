@@ -7,7 +7,6 @@ import {
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { nanoid } from 'nanoid';
 import {
   Input,
   InputGroup,
@@ -35,7 +34,7 @@ export const ContactForm = ({ onSave }) => {
       }}
       validationSchema={FormSchema}
       onSubmit={(values, actions) => {
-        onSave({ ...values, id: nanoid() });
+        onSave({ ...values });
         actions.resetForm();
       }}
     >

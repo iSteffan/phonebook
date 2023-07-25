@@ -61,7 +61,7 @@ export const ContactModalWindow = ({ contact, isOpen, onClose }) => {
             onSubmit={(values, actions) => {
               dispatch(
                 editContact({
-                  id: contact.id,
+                  _id: contact._id,
                   name: values.name,
                   number: values.number,
                 })

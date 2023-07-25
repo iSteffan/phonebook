@@ -39,6 +39,9 @@ const Contacts = () => {
     return filteredContacts;
   };
 
+  console.log('contacts', contacts);
+  console.log('filteredArr', filteredArr());
+
   const doDeleteContact = id => {
     dispatch(deleteContact(id));
   };

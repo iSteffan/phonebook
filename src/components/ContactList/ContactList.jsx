@@ -27,10 +27,10 @@ export const ContactList = ({ contacts, onDelete }) => {
   return (
     <List>
       {contacts.map(contact => {
-        const isModalOpen = isOpen[contact.id] || false;
+        const isModalOpen = isOpen[contact._id] || false;
 
         return (
-          <ListItem key={contact.id}>
+          <ListItem key={contact._id}>
             <ContactName>
               <FiUser />
               {contact.name}:
@@ -48,19 +48,19 @@ export const ContactList = ({ contacts, onDelete }) => {
                 colorScheme="blue"
                 aria-label="change contact"
                 icon={<GrConfigure color="white" />}
-                onClick={() => handleOpen(contact.id)}
+                onClick={() => handleOpen(contact._id)}
               />
               <IconButton
                 colorScheme="gray"
                 aria-label="delete contact"
                 icon={<AiOutlineDelete />}
-                onClick={() => onDelete(contact.id)}
+                onClick={() => onDelete(contact._id)}
               />
             </ButtonGroup>
             <ContactModalWindow
               contact={contact}
               isOpen={isModalOpen}
-              onClose={() => handleClose(contact.id)}
+              onClose={() => handleClose(contact._id)}
             />
           </ListItem>
         );
