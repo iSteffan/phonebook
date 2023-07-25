@@ -32,7 +32,7 @@ const handleDeleteContactSuccess = (state, action) => {
     ...state,
     isLoading: false,
     error: null,
-    items: state.items.filter(item => item.id !== action.payload.id),
+    items: state.items.filter(item => item._id !== action.payload._id),
   };
 };
 
@@ -60,7 +60,7 @@ const contactsSlice = createSlice({
       .addCase(deleteContact.fulfilled, handleDeleteContactSuccess)
       .addCase(editContact.fulfilled, (state, action) => {
         const index = state.items.findIndex(
-          task => task.id === action.payload.id
+          task => task._id === action.payload._id
         );
         state.items.splice(index, 1);
         state.items.unshift(action.payload);
